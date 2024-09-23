@@ -28,6 +28,27 @@ function adjustKeypointListHeight() {
     keypointListContainer.style.height = `${imageHeight - 20}px`;
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    const predefinedPath = 'annotations.json';
+
+    // Fetch the JSON file and load annotations
+    fetch(predefinedPath)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            annotations = data; // Load the annotations array
+            renderKeypoints(); // Render them on the image
+            updateKeypointList(); // Update the list with the keypoints
+        })
+        .catch(error => {
+            console.error('Error loading the JSON file:', error);
+        });
+});
+
 // Also call the function on window resize to keep things responsive
 window.addEventListener('resize', adjustKeypointListHeight);
 
