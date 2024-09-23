@@ -104,3 +104,14 @@ button:hover {
     cursor: pointer;
 }
 
+/* Highlighted keypoint style */
+.keypoint.highlighted {
+    background-color: yellow; /* Color for highlighted keypoint */
+    border: 2px solid red;
+}
+
+/* Highlighted list item */
+#keypoint-list li.highlighted {
+    background-color: yellow; /* Color for highlighted list item */
+    border: 1px solid red;
+}

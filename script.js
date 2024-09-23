@@ -83,6 +83,11 @@ function renderKeypoints() {
         // Add event for hiding tooltip
         keypointDiv.addEventListener('mouseleave', hideTooltip);
 
+        // Add click event to highlight the keypoint and its list entry
+        keypointDiv.addEventListener('click', () => {
+            highlightKeypoint(keypoint.name);
+        });
+
         // Add keypoint to the image container
         document.getElementById('image-container').appendChild(keypointDiv);
     });
@@ -305,4 +310,25 @@ function showTooltip(event, name, description) {
     tooltip.style.display = 'block';
     tooltip.style.left = `${event.pageX + 10}px`;
     tooltip.style.top = `${event.pageY + 10}px`;
+}
+
+function highlightKeypoint(keypointName) {
+    // Clear previous highlights from keypoints
+    document.querySelectorAll('.keypoint').forEach(kp => kp.classList.remove('highlighted'));
+
+    // Clear previous highlights from the list
+    document.querySelectorAll('#keypoint-list li').forEach(li => li.classList.remove('highlighted'));
+
+    // Highlight the selected keypoint on the image
+    const keypointDiv = document.querySelector(`.keypoint[data-name="${keypointName}"]`);
+    if (keypointDiv) {
+        keypointDiv.classList.add('highlighted');
+    }
+
+    // Highlight the corresponding entry in the keypoint list
+    const listItem = Array.from(document.querySelectorAll('#keypoint-list li'))
+        .find(li => li.textContent === keypointName);
+    if (listItem) {
+        listItem.classList.add('highlighted');
+    }
 }
