@@ -1,0 +1,106 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+/* Flex container for side-by-side layout */
+#annotator-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+/* Styling for the image container */
+#image-container {
+    position: relative;
+    flex: 1;  /* Let the image take up more space */
+    max-width: 60%; /* Restrict image container size */
+    padding-right: 20px;
+}
+
+/* Tooltip for showing keypoint info */
+.tooltip {
+    position: absolute;
+    display: none;
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+/* Keypoint list container */
+#keypoint-list-container {
+    flex: 0.4;  /* Allocate space for the list */
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#keypoint-list-container h3 {
+    margin-top: 0;
+}
+
+#keypoint-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#keypoint-list li {
+    padding: 5px;
+    margin: 5px 0;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#keypoint-list li:hover {
+    background-color: #e0e0e0;
+}
+
+/* Keypoint form styling */
+#keypoint-form {
+    margin-top: 20px;
+}
+
+#keypoint-form input {
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/* Image resizing to fit container */
+#image {
+    max-width: 100%;
+    height: auto;
+}
+
+.keypoint {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    cursor: pointer;
+}
+

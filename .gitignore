@@ -1,0 +1,9 @@
+# Annotations
+annotations/
+
+# Assets
+images/
+label-studio/
+
+# Backup files
+*.bak

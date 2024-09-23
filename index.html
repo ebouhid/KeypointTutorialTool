@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keypoint Annotator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Keypoint Annotator</h1>
+    
+    <!-- Mode toggle button -->
+    <button id="toggle-mode">Toggle Annotation Mode</button>
+
+    <!-- File input for loading annotations -->
+    <input type="file" id="load-annotations" accept=".json">
+
+    <button id="toggle-edit-mode">Toggle Edit Mode</button>
+
+    <!-- Wrapper to hold the image container and keypoint list side by side -->
+    <div id="annotator-container">
+        <!-- Image container -->
+        <div id="image-container">
+            <img id="image" src="images/front.png" alt="Sample Image" />
+            <!-- Tooltip -->
+            <div id="tooltip" class="tooltip"></div>
+        </div>
+
+        <!-- Keypoint list container -->
+        <div id="keypoint-list-container">
+            <h3>Keypoint List</h3>
+            <ul id="keypoint-list"></ul>
+        </div>
+    </div>
+
+    <!-- Form for keypoint input -->
+    <div id="keypoint-form" class="hidden">
+        <label for="keypoint-name">Name:</label>
+        <input type="text" id="keypoint-name">
+        <label for="keypoint-description">Description:</label>
+        <input type="text" id="keypoint-description">
+        <button id="save-keypoint">Save Keypoint</button>
+    </div>
+
+    <button id="save-annotations">Save Annotations</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
