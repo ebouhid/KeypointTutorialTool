@@ -11,8 +11,9 @@ h1 {
 /* Flex container for side-by-side layout */
 #annotator-container {
     display: flex;
-    justify-content: space-between;
     align-items: flex-start;
+    gap: 20px; /* Space between image and keypoint list */
+    margin-top: 20px;
 }
 
 /* Styling for the image container */
@@ -37,19 +38,22 @@ h1 {
 /* Keypoint list container */
 #keypoint-list-container {
     flex: 0.4;  /* Allocate space for the list */
+    overflow-y: auto; /* Ensure scrolling */
     background-color: #f9f9f9;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
     border-radius: 5px;
 }
 
 #keypoint-list-container h3 {
     margin-top: 0;
+    height: auto;
 }
 
 #keypoint-list {
     list-style-type: none;
     padding: 0;
+    margin: 0;
 }
 
 #keypoint-list li {

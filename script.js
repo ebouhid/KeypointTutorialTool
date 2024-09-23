@@ -14,6 +14,23 @@ const saveKeypointButton = document.getElementById('save-keypoint');
 const saveAnnotationsButton = document.getElementById('save-annotations');
 const loadAnnotationsInput = document.getElementById('load-annotations');
 
+const image = document.getElementById('image');
+image.addEventListener('load', () => {
+    adjustKeypointListHeight();
+});
+
+// Function to adjust keypoint list height
+function adjustKeypointListHeight() {
+    const imageHeight = image.clientHeight;
+    const keypointListContainer = document.getElementById('keypoint-list-container');
+    
+    // Subtract some padding or margin if necessary (e.g., 20px)
+    keypointListContainer.style.height = `${imageHeight - 20}px`;
+}
+
+// Also call the function on window resize to keep things responsive
+window.addEventListener('resize', adjustKeypointListHeight);
+
 // Toggle annotation mode
 toggleModeButton.addEventListener('click', () => {
     isAnnotating = !isAnnotating;
