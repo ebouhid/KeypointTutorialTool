@@ -80,13 +80,13 @@
     {
         "x": 379,
         "y": 284.133,
-        "name": "CotoveloDireito_Topo",
+        "name": "CotoveloDireito_Externo",
         "description": " "
     },
     {
         "x": 395,
         "y": 307.133,
-        "name": "CotoveloDireito_Base",
+        "name": "CotoveloDireito_Interno",
         "description": " "
     },
     {
@@ -116,13 +116,13 @@
     {
         "x": 637,
         "y": 285.133,
-        "name": "CotoveloEsquerdo_Topo",
+        "name": "CotoveloEsquerdo_Externo",
         "description": " "
     },
     {
         "x": 616,
         "y": 305.133,
-        "name": "CotoveloEsquerdo_Base",
+        "name": "CotoveloEsquerdo_Interno",
         "description": " "
     },
     {
