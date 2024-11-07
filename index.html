@@ -11,29 +11,28 @@
     
     <!-- Mode toggle button -->
     <button id="toggle-mode">Toggle Annotation Mode</button>
-
-    <!-- File input for loading annotations -->
     <input type="file" id="load-annotations" accept=".json">
-
     <button id="toggle-edit-mode">Toggle Edit Mode</button>
+
+    <!-- Tab menu for selecting views -->
+    <div id="view-tabs">
+        <button id="front-view" class="tab active">Front View</button>
+        <button id="right-view" class="tab">Right View</button>
+    </div>
 
     <!-- Wrapper to hold the image container and keypoint list side by side -->
     <div id="annotator-container">
-        <!-- Image container -->
         <div id="image-container">
             <img id="image" src="sample_images/front.png" alt="Sample Image" />
-            <!-- Tooltip -->
             <div id="tooltip" class="tooltip"></div>
         </div>
 
-        <!-- Keypoint list container -->
         <div id="keypoint-list-container">
             <h3>Keypoint List</h3>
             <ul id="keypoint-list"></ul>
         </div>
     </div>
 
-    <!-- Form for keypoint input -->
     <div id="keypoint-form" class="hidden">
         <label for="keypoint-name">Name:</label>
         <input type="text" id="keypoint-name">

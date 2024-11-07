@@ -4,6 +4,7 @@ let annotations = [];
 let currentKeypoint = null;
 let isDragging = false;
 let selectedKeypointDiv = null;
+let currentView = 'front'; 
 
 const imageContainer = document.getElementById('image-container');
 const toggleModeButton = document.getElementById('toggle-mode');
@@ -13,8 +14,12 @@ const keypointForm = document.getElementById('keypoint-form');
 const saveKeypointButton = document.getElementById('save-keypoint');
 const saveAnnotationsButton = document.getElementById('save-annotations');
 const loadAnnotationsInput = document.getElementById('load-annotations');
-
 const image = document.getElementById('image');
+
+// View tab buttons
+const frontViewButton = document.getElementById('front-view');
+const rightViewButton = document.getElementById('right-view');
+
 image.addEventListener('load', () => {
     adjustKeypointListHeight();
 });
@@ -29,28 +34,41 @@ function adjustKeypointListHeight() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const predefinedPath = 'annotations.json';
-
-    // Fetch the JSON file and load annotations
-    fetch(predefinedPath)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            annotations = data; // Load the annotations array
-            renderKeypoints(); // Render them on the image
-            updateKeypointList(); // Update the list with the keypoints
-        })
-        .catch(error => {
-            console.error('Error loading the JSON file:', error);
-        });
+    loadAnnotationsForView(currentView);
 });
+
+frontViewButton.addEventListener('click', () => switchView('front'));
+rightViewButton.addEventListener('click', () => switchView('right'));
 
 // Also call the function on window resize to keep things responsive
 window.addEventListener('resize', adjustKeypointListHeight);
+
+function switchView(view) {
+    if (view !== currentView) {
+        currentView = view;
+
+        // Update active tab styling
+        document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+        document.getElementById(`${view}-view`).classList.add('active');
+
+        // Update image source and annotations
+        image.src = `sample_images/${view}.png`;
+        loadAnnotationsForView(view);
+    }
+}
+
+function loadAnnotationsForView(view) {
+    fetch(`annotation_files/${view}.json`)
+    .then(console.log("Fetching annotations for view:", view))
+        .then(response => response.ok ? response.json() : [])
+        .then(data => {
+            annotations = data;
+            console.log("Loaded annotations:", annotations); // Add this line
+            renderKeypoints();
+            updateKeypointList();
+        })
+        .catch(error => console.error(`Error loading ${view} annotations:`, error));
+}
 
 // Toggle annotation mode
 toggleModeButton.addEventListener('click', () => {
@@ -128,10 +146,9 @@ function renderKeypoints() {
 
         // Add keypoint to the image container
         document.getElementById('image-container').appendChild(keypointDiv);
+        console.log("Rendered keypoint:", keypoint); // Add this line
     });
 }
-
-
 
 // Select keypoint to edit
 function selectKeypoint(keypointDiv) {
